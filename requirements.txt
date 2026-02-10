@@ -5,3 +5,7 @@ requests
 scikit-learn
 joblib
 reportlab
+statsmodels
+scipy
+matplotlib
+seaborn
