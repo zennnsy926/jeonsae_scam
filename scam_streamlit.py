@@ -647,14 +647,16 @@ def generate_pdf_report(inputs, resA, resB, zone_name, zone_desc, a_grade, b_gra
         
         # 한글 폰트 등록
         try:
-            pdfmetrics.registerFont(TTFont('NanumGothic', '/System/Library/Fonts/Supplemental/AppleGothic.ttf'))
+            # Streamlit Cloud용: fonts 폴더의 폰트 사용
+            pdfmetrics.registerFont(TTFont('NanumGothic', 'fonts/NanumGothic.ttf'))
             font_name = 'NanumGothic'
         except:
             try:
-                pdfmetrics.registerFont(TTFont('Malgun', 'malgun.ttf'))
-                font_name = 'Malgun'
+                # 로컬 Mac용
+                pdfmetrics.registerFont(TTFont('NanumGothic', '/System/Library/Fonts/Supplemental/AppleGothic.ttf'))
+                font_name = 'NanumGothic'
             except:
-                font_name = 'Helvetica'
+                font_name = 'Helvetica'  # 최악의 경우 영문만
         
         buffer = BytesIO()
         doc = SimpleDocTemplate(buffer, pagesize=A4, topMargin=15*mm, bottomMargin=15*mm, leftMargin=20*mm, rightMargin=20*mm)
