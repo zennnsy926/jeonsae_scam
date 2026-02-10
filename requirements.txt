@@ -9,3 +9,4 @@ statsmodels
 scipy
 matplotlib
 seaborn
+plotly
